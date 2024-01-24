@@ -28,3 +28,20 @@ AT+CPMS="SM" Check the number of messages stored in SIM
 AT+CCLK?  ->Check time
 AT+CMGD=x Delete message x
 AT+CNMI=1,1,0,0,0 Enable new message notification
+
+
+SetAPN        AT+SAPBR=3,1,"APN","www.safaricom.com"
+ActGPRS       AT+SAPBR =1,1
+GetIP        AT+SAPBR=2,1
+ConnectIP     AT+CGATT=1
+InitHTTP      AT+HTTPINIT
+EnableHTTPS  AT+HTTPSSL=1
+SetCIDPAR     AT+HTTPPARA= \"CID\",1
+SetURL        AT+HTTPPARA="URL","https://script.google.com/macros/s/AKfycbzeQ68bUQL5WwlCO5JzZ1tPIiBU83GbECs0U0WnzgnrjTRGUzSjNnRSoIA7rTcbRbXtVA/exec?data=45678766"
+HTTPRequest   AT+HTTPACTION=0
+HTTPResponse  AT+HTTPREAD
+TERMINATEHTTP AT+HTTPTERM
+Isconnected   AT+CGATT?
+EchoOn         ATE1
+EchoOff        ATE0
+HttpStatus     AT+HTTPSTATUS?
