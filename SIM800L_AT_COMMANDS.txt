@@ -1,0 +1,30 @@
+AT->ok Test handshake
+AT+CSQ->OK   To read the signal quality
+AT+CCID->{Sim Infomormation} To read the sim information
+AT+CREG? ->{Connection status}Check if it has connected to the network
+
+Send SMS USing SIM800L AT COMMANDS
+AT   ->Check Handshake
+AT+CMGF=1 ->Configure to text Mode
+AT+CMGS="+254XXXXXXXXXX" ->Message destination
+Response > "Write your message"
+Ctrl-Z to send sms
+
+
+New Message Notification
+
++CMTI "SIM" x   This is the new message notification 
+x->is the message index received
+To read message x send AT+CMGR=x
+
+Deleting a message
+
+AT+CMGD=x ->to delete the message in index x
+AT+CMGDA ="DEL ALL" Delete all messages
+AT+CMGL  ->Read all messages
+AT+CPMS=?  Check the memory storage area for SMS
+
+AT+CPMS="SM" Check the number of messages stored in SIM
+AT+CCLK?  ->Check time
+AT+CMGD=x Delete message x
+AT+CNMI=1,1,0,0,0 Enable new message notification
